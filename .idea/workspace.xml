@@ -5,43 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="296d0c3e-1682-4a95-a881-92feaabce9ed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-app/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-app/src/main/java/com/interview/qa/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-app/src/main/java/com/interview/qa/app/model/dto/QuestionDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-app/src/main/java/com/interview/qa/app/service/question/cache/QuestionAppService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-common/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-common/src/main/java/com/interview/qa/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-controller/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-controller/src/main/java/com/interview/qa/controller/exception/BadRequestExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-controller/src/main/java/com/interview/qa/controller/exception/ExceptionResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-controller/src/main/java/com/interview/qa/controller/exception/InternalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-controller/src/main/java/com/interview/qa/controller/model/builder/ResponseBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-controller/src/main/java/com/interview/qa/controller/resource/QuestionAnswerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-domain/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/model/Question.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/model/Tag.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/repository/QuestionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/repository/TagRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/service/QuestionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/service/TagService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/service/impl/QuestionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/service/impl/TagServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-infrastructure/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-infrastructure/src/main/java/com/interview/qa/persistence/convertor/QuestionBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-infrastructure/src/main/java/com/interview/qa/persistence/mapper/QuestionMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-infrastructure/src/main/java/com/interview/qa/persistence/mapper/TagMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-infrastructure/src/main/java/com/interview/qa/persistence/model/QuestionDO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-infrastructure/src/main/java/com/interview/qa/persistence/model/TagDO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-infrastructure/src/main/java/com/interview/qa/persistence/repository/QuestionRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/start/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/start/src/main/java/com/interview/qa/InterviewQAApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/start/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,20 +30,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "corretto-11",
-    "last_opened_file_path": "E:/code/InterviewQA/qa-infrastructure/src/main/java/com/interview/qa/persistence/model"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-11&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/code/InterviewQA/qa-infrastructure/src/main/java/com/interview/qa/persistence/model&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\code\InterviewQA\qa-infrastructure\src\main\java\com\interview\qa\persistence\model" />
