@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="296d0c3e-1682-4a95-a881-92feaabce9ed" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-app/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-app/src/main/java/com/interview/qa/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-app/src/main/java/com/interview/qa/app/model/dto/QuestionDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-app/src/main/java/com/interview/qa/app/service/question/cache/QuestionAppService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-common/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-common/src/main/java/com/interview/qa/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-controller/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-controller/src/main/java/com/interview/qa/controller/exception/BadRequestExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-controller/src/main/java/com/interview/qa/controller/exception/ExceptionResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-controller/src/main/java/com/interview/qa/controller/exception/InternalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-controller/src/main/java/com/interview/qa/controller/model/builder/ResponseBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-controller/src/main/java/com/interview/qa/controller/resource/QuestionAnswerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-domain/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/model/Question.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/model/Tag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/repository/QuestionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/repository/TagRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/service/QuestionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/service/TagService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/service/impl/QuestionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-domain/src/main/java/com/interview/qa/domain/service/impl/TagServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-infrastructure/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-infrastructure/src/main/java/com/interview/qa/persistence/convertor/QuestionBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-infrastructure/src/main/java/com/interview/qa/persistence/mapper/QuestionMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-infrastructure/src/main/java/com/interview/qa/persistence/mapper/TagMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-infrastructure/src/main/java/com/interview/qa/persistence/model/QuestionDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-infrastructure/src/main/java/com/interview/qa/persistence/model/TagDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-infrastructure/src/main/java/com/interview/qa/persistence/repository/QuestionRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/start/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/start/src/main/java/com/interview/qa/InterviewQAApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/start/src/main/resources/application.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2GbjPXN5hu2pohR7FeGLNOl8Fkg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="false" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "corretto-11",
+    "last_opened_file_path": "E:/code/InterviewQA/qa-infrastructure/src/main/java/com/interview/qa/persistence/model"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\code\InterviewQA\qa-infrastructure\src\main\java\com\interview\qa\persistence\model" />
+      <recent name="E:\code\InterviewQA\qa-controller\src\main\java\com\interview\qa\controller\exception" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.interview.qa.domain.service.impl" />
+      <recent name="com.interview.qa.domain.service" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="interview-qa-env/docker-compose-interview-qa.yaml.mysql: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="mysql" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="interview-qa-env/docker-compose-interview-qa.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.interview-qa-env/docker-compose-interview-qa.yaml.mysql: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="296d0c3e-1682-4a95-a881-92feaabce9ed" name="Changes" comment="" />
+      <created>1666664155801</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666664155801</updated>
+      <workItem from="1666664157083" duration="16156000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
