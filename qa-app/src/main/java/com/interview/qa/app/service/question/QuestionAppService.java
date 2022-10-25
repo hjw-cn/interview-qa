@@ -1,4 +1,4 @@
-package com.interview.qa.app.service.question.cache;
+package com.interview.qa.app.service.question;
 
 import com.interview.qa.domain.model.Question;
 import com.interview.qa.domain.service.QuestionService;

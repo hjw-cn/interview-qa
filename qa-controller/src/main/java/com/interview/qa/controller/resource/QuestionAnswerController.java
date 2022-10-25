@@ -2,7 +2,7 @@ package com.interview.qa.controller.resource;
 
 import com.alibaba.cola.dto.MultiResponse;
 import com.alibaba.cola.dto.Response;
-import com.interview.qa.app.service.question.cache.QuestionAppService;
+import com.interview.qa.app.service.question.QuestionAppService;
 import com.interview.qa.controller.model.builder.ResponseBuilder;
 import com.interview.qa.domain.model.Question;
 import lombok.RequiredArgsConstructor;
@@ -23,31 +23,31 @@ public class QuestionAnswerController {
         return ResponseBuilder.withMulti(true, "200", "success", allQuestion);
     }
 
-    @GetMapping("/questions/{id}")
+    @GetMapping("/question/{id}")
     public Response getQuestionById(@PathVariable Long id) {
         Question questionById = questionAppService.findQuestionById(id);
         return ResponseBuilder.with(true, "200", "success", questionById);
     }
 
-    @GetMapping("/questions/tag/{tag}")
+    @GetMapping("/question/tag/{tag}")
     public MultiResponse<Question> getQuestionByTag(@PathVariable String tag) {
         List<Question> questionByTag = questionAppService.findQuestionByTag(tag);
         return ResponseBuilder.withMulti(true, "200", "success", questionByTag);
     }
 
-    @PostMapping("/questions/add")
+    @PostMapping("/question/insert")
     public Response addQuestion(@RequestBody Question question) {
         questionAppService.insertQuestion(question);
         return ResponseBuilder.with(true, "200", "success", null);
     }
 
-    @PutMapping("/questions/update")
+    @PutMapping("/question/update")
     public Response updateQuestion(@RequestBody Question question) {
         questionAppService.updateQuestion(question);
         return ResponseBuilder.with(true, "200", "success", null);
     }
 
-    @DeleteMapping("/questions/delete/{id}")
+    @DeleteMapping("/question/delete/{id}")
     public Response deleteQuestion(@PathVariable Long id) {
         questionAppService.deleteQuestionById(id);
         return ResponseBuilder.with(true, "200", "success", null);

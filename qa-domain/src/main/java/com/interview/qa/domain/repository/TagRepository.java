@@ -9,7 +9,7 @@ public interface TagRepository {
     /**
      * 删除标签
      */
-    void deleteTag();
+    void deleteTagById(Long id);
 
     /**
      * 查询所有标签
