@@ -19,4 +19,5 @@ public class QuestionDO implements Serializable {
     private String createTime;
     private Long isDelete;
     private String tags;
+    private String answer;
 }

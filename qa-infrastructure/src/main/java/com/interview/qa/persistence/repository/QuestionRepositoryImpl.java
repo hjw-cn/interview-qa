@@ -5,6 +5,8 @@ import com.interview.qa.domain.repository.QuestionRepository;
 import com.interview.qa.persistence.convertor.QuestionBuilder;
 import com.interview.qa.persistence.mapper.QuestionMapper;
 import com.interview.qa.persistence.model.QuestionDO;
+import com.interview.qa.persistence.model.QuestionSearchDO;
+import com.interview.qa.persistence.search.QuestionSearchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +19,7 @@ import static java.util.stream.Collectors.toList;
 public class QuestionRepositoryImpl implements QuestionRepository {
 
     private final QuestionMapper questionMapper;
+    private final QuestionSearchRepository questionSearchRepository;
 
     @Override
     public void deleteQuestionById(Long id) {
@@ -39,8 +42,12 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 
     @Override
     public void insertQuestion(Question question) {
+        // 构建持久化对象
         QuestionDO questionDO = QuestionBuilder.toDataObject(question);
+        QuestionSearchDO questionSearchDO = QuestionBuilder.toSearchDataObject(question);
+        // 持久化到mysql和es
         questionMapper.insert(questionDO);
+        questionSearchRepository.save(questionSearchDO);
     }
 
     @Override

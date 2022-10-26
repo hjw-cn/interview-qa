@@ -1,5 +1,8 @@
 package com.interview.qa.app.model.dto;
 
+import lombok.Data;
+
+@Data
 public class QuestionDTO {
     private Long id;
     private String type;
@@ -8,4 +11,5 @@ public class QuestionDTO {
     private String updateTime;
     private String createTime;
     private String tags;
+    private String answer;
 }

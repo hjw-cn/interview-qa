@@ -26,7 +26,9 @@ spring:
       filters: stat,wall,slf4j
       connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
       use-global-data-source-stat: true
-
+  elasticsearch:
+    rest:
+      uris: http://localhost:9200
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

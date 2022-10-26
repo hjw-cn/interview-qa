@@ -14,4 +14,5 @@ public class Question implements Serializable {
     private String createTime;
     private Long isDelete;
     private String tags;
+    private String answer;
 }
