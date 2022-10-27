@@ -25,6 +25,7 @@ public class TagRepositoryImpl implements TagRepository {
     @Override
     public List<Tag> findAllTag() {
         List<TagDO> tagDOS = tagMapper.selectList(null);
+        // 转为领域对象
         return tagDOS.stream().map(tagDO -> {
             Tag tag = new Tag();
             tag.setId(tagDO.getId());
