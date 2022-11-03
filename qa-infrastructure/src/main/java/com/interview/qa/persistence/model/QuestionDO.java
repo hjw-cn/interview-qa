@@ -20,4 +20,5 @@ public class QuestionDO implements Serializable {
     private Long isDelete;
     private String tags;
     private String answer;
+    private String uid;
 }

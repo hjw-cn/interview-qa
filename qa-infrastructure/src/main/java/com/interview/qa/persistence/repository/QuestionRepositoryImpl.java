@@ -1,5 +1,6 @@
 package com.interview.qa.persistence.repository;
 
+import cn.hutool.core.lang.UUID;
 import com.interview.qa.domain.model.Question;
 import com.interview.qa.domain.repository.QuestionRepository;
 import com.interview.qa.persistence.convertor.QuestionBuilder;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 
@@ -37,11 +39,17 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     @Override
     public Question findQuestionById(Long id) {
         QuestionDO questionDO = questionMapper.selectById(id);
-        return QuestionBuilder.toDomainObject(questionDO);
+        Question question = QuestionBuilder.toDomainObject(questionDO);
+        Optional<QuestionSearchDO> questionSearchDO = questionSearchRepository.findById(questionDO.getUid());
+//        question.set
+//        questionSearchRepository.fin
+        return question;
     }
 
     @Override
     public void insertQuestion(Question question) {
+        String uid = UUID.randomUUID().toString();
+        question.setUid(uid);
         // 构建持久化对象
         QuestionDO questionDO = QuestionBuilder.toDataObject(question);
         QuestionSearchDO questionSearchDO = QuestionBuilder.toSearchDataObject(question);

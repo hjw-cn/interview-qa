@@ -16,7 +16,8 @@ public class QuestionBuilder {
         question.setCreateTime(questionDO.getCreateTime());
         question.setIsDelete(questionDO.getIsDelete());
         question.setTags(questionDO.getTags());
-        question.setAnswer(question.getAnswer());
+        question.setAnswer(questionDO.getAnswer());
+        question.setUid(questionDO.getUid());
         return question;
     }
 
@@ -31,12 +32,14 @@ public class QuestionBuilder {
         questionDO.setIsDelete(question.getIsDelete());
         questionDO.setTags(question.getTags());
         questionDO.setAnswer(question.getAnswer());
+        questionDO.setUid(question.getUid());
         return questionDO;
     }
 
     public static QuestionSearchDO toSearchDataObject(Question question) {
         QuestionSearchDO questionSearchDO = new QuestionSearchDO();
-        questionSearchDO.setId(question.getId());
+        // mysql中的uid对应es中的id
+        questionSearchDO.setId(question.getUid());
         questionSearchDO.setContent(question.getContent());
         questionSearchDO.setAnswer(question.getAnswer());
         return questionSearchDO;

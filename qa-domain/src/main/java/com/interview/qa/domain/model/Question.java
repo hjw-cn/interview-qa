@@ -15,4 +15,5 @@ public class Question implements Serializable {
     private Long isDelete;
     private String tags;
     private String answer;
+    private String uid;
 }
