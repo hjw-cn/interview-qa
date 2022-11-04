@@ -1,6 +1,7 @@
 package com.interview.qa.domain.service;
 
 import com.interview.qa.domain.model.Question;
+import com.interview.qa.domain.model.condition.QuestionsCondition;
 
 import java.util.List;
 
@@ -34,5 +35,5 @@ public interface QuestionService {
     /**
      * 根据标签查询问题
      */
-    List<Question> findQuestionByTag(String tag);
+    List<Question> findQuestionsByCondition(QuestionsCondition condition);
 }

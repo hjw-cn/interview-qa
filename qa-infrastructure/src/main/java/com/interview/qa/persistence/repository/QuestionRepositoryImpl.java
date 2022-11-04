@@ -2,6 +2,7 @@ package com.interview.qa.persistence.repository;
 
 import cn.hutool.core.lang.UUID;
 import com.interview.qa.domain.model.Question;
+import com.interview.qa.domain.model.condition.QuestionsCondition;
 import com.interview.qa.domain.repository.QuestionRepository;
 import com.interview.qa.persistence.convertor.QuestionBuilder;
 import com.interview.qa.persistence.mapper.QuestionMapper;
@@ -65,11 +66,12 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     }
 
     @Override
-    public List<Question> findQuestionByTag(String tag) {
+    public List<Question> findQuestionByCondition(QuestionsCondition condition) {
 //        List<QuestionDO> questionDOS = questionMapper.findQuestionByTag(tag);
 //        return questionDOS.stream().map(
 //                QuestionBuilder::toDomainObject
 //        ).collect(toList());
+
         return null;
     }
 }

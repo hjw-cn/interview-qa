@@ -1,6 +1,7 @@
 package com.interview.qa.domain.service.impl;
 
 import com.interview.qa.domain.model.Question;
+import com.interview.qa.domain.model.condition.QuestionsCondition;
 import com.interview.qa.domain.repository.QuestionRepository;
 import com.interview.qa.domain.service.QuestionService;
 import lombok.RequiredArgsConstructor;
@@ -40,7 +41,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public List<Question> findQuestionByTag(String tag) {
-        return questionRepository.findQuestionByTag(tag);
+    public List<Question> findQuestionsByCondition(QuestionsCondition condition) {
+        return questionRepository.findQuestionByCondition(condition);
     }
 }
