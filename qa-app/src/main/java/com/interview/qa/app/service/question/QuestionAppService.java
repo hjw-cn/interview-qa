@@ -1,11 +1,14 @@
 package com.interview.qa.app.service.question;
 
+import cn.hutool.core.util.StrUtil;
 import com.interview.qa.app.model.command.QuestionsQuery;
 import com.interview.qa.domain.model.Question;
 import com.interview.qa.domain.model.condition.QuestionsCondition;
 import com.interview.qa.domain.service.QuestionService;
+import io.netty.util.internal.StringUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -42,14 +45,16 @@ public class QuestionAppService {
     }
 
 
-
-    private QuestionsCondition toQuestionCondition(QuestionsQuery questionsQuery){
+    private QuestionsCondition toQuestionCondition(QuestionsQuery questionsQuery) {
         QuestionsCondition questionsCondition = new QuestionsCondition();
-        questionsCondition.setPage(questionsQuery.getPage());
-        questionsCondition.setPageSize(questionsQuery.getPageSize());
+        questionsCondition.setLimit(questionsQuery.getPageSize());
+        // 根据page和pageSize计算offset
+        questionsCondition.setOffset((questionsQuery.getPage() - 1) * questionsQuery.getPageSize());
         questionsCondition.setTags(questionsQuery.getTags());
-        questionsCondition.setSortField(questionsQuery.getSortField());
-        questionsCondition.setSortType(questionsQuery.getSortType());
+        if (questionsQuery.getSortField() != null){
+            String orderBy = StrUtil.concat(true, questionsQuery.getSortField(), " ", questionsQuery.getSortField());
+            questionsCondition.setOrderBy(orderBy);
+        }
         return questionsCondition;
     }
 }

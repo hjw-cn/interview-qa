@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.interview.qa.persistence.mapper.QuestionDOMapper">
+    <sql id="ALL_COLUMNS">
+        id
+        ,
+        `type`,
+        content,
+        `level`,
+        update_time,
+        create_time,
+        tags,
+        answer,
+        uid
+    </sql>
+
+    <select id="findQuestionsByCondition" resultType="com.interview.qa.persistence.model.QuestionDO"
+            parameterType="com.interview.qa.domain.model.condition.QuestionsCondition">
+        SELECT
+        <include refid="ALL_COLUMNS"/>
+        FROM question
+        ORDER BY #{orderBy}
+        LIMIT #{offset}, #{limit}
+    </select>
+
+
+</mapper>

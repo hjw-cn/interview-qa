@@ -3,7 +3,7 @@ package com.interview.qa.persistence.repository;
 
 import com.interview.qa.domain.model.Tag;
 import com.interview.qa.domain.repository.TagRepository;
-import com.interview.qa.persistence.mapper.TagMapper;
+import com.interview.qa.persistence.mapper.TagDOMapper;
 import com.interview.qa.persistence.model.TagDO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -15,16 +15,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class TagRepositoryImpl implements TagRepository {
 
-    private final TagMapper tagMapper;
+    private final TagDOMapper tagDOMapper;
 
     @Override
     public void deleteTagById(Long id) {
-        tagMapper.deleteById(id);
+        tagDOMapper.deleteById(id);
     }
 
     @Override
     public List<Tag> findAllTag() {
-        List<TagDO> tagDOS = tagMapper.selectList(null);
+        List<TagDO> tagDOS = tagDOMapper.selectList(null);
         // 转为领域对象
         return tagDOS.stream().map(tagDO -> {
             Tag tag = new Tag();
@@ -44,7 +44,7 @@ public class TagRepositoryImpl implements TagRepository {
         // TODO Auto-generated method stub
         TagDO tagDO = new TagDO();
         tagDO.setTagName(tag.getTagName());
-        tagMapper.insert(tagDO);
+        tagDOMapper.insert(tagDO);
     }
 
 }

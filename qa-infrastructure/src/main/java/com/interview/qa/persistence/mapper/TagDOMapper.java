@@ -5,5 +5,6 @@ import com.interview.qa.persistence.model.TagDO;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface TagMapper extends BaseMapper<TagDO> {
+public interface TagDOMapper extends BaseMapper<TagDO> {
+
 }

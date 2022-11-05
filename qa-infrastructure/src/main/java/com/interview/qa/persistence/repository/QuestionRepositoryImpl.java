@@ -5,7 +5,7 @@ import com.interview.qa.domain.model.Question;
 import com.interview.qa.domain.model.condition.QuestionsCondition;
 import com.interview.qa.domain.repository.QuestionRepository;
 import com.interview.qa.persistence.convertor.QuestionBuilder;
-import com.interview.qa.persistence.mapper.QuestionMapper;
+import com.interview.qa.persistence.mapper.QuestionDOMapper;
 import com.interview.qa.persistence.model.QuestionDO;
 import com.interview.qa.persistence.model.QuestionSearchDO;
 import com.interview.qa.persistence.search.QuestionSearchRepository;
@@ -21,17 +21,17 @@ import static java.util.stream.Collectors.toList;
 @RequiredArgsConstructor
 public class QuestionRepositoryImpl implements QuestionRepository {
 
-    private final QuestionMapper questionMapper;
+    private final QuestionDOMapper questionDOMapper;
     private final QuestionSearchRepository questionSearchRepository;
 
     @Override
     public void deleteQuestionById(Long id) {
-        questionMapper.deleteById(id);
+        questionDOMapper.deleteById(id);
     }
 
     @Override
     public List<Question> findAllQuestion() {
-        List<QuestionDO> questionDOS = questionMapper.selectList(null);
+        List<QuestionDO> questionDOS = questionDOMapper.selectList(null);
         return questionDOS.stream().map(
                 QuestionBuilder::toDomainObject
         ).collect(toList());
@@ -39,7 +39,7 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 
     @Override
     public Question findQuestionById(Long id) {
-        QuestionDO questionDO = questionMapper.selectById(id);
+        QuestionDO questionDO = questionDOMapper.selectById(id);
         Question question = QuestionBuilder.toDomainObject(questionDO);
         Optional<QuestionSearchDO> questionSearchDO = questionSearchRepository.findById(questionDO.getUid());
 //        question.set
@@ -55,23 +55,21 @@ public class QuestionRepositoryImpl implements QuestionRepository {
         QuestionDO questionDO = QuestionBuilder.toDataObject(question);
         QuestionSearchDO questionSearchDO = QuestionBuilder.toSearchDataObject(question);
         // 持久化到mysql和es
-        questionMapper.insert(questionDO);
+        questionDOMapper.insert(questionDO);
         questionSearchRepository.save(questionSearchDO);
     }
 
     @Override
     public void updateQuestion(Question question) {
         QuestionDO questionDO = QuestionBuilder.toDataObject(question);
-        questionMapper.updateById(questionDO);
+        questionDOMapper.updateById(questionDO);
     }
 
     @Override
     public List<Question> findQuestionByCondition(QuestionsCondition condition) {
-//        List<QuestionDO> questionDOS = questionMapper.findQuestionByTag(tag);
-//        return questionDOS.stream().map(
-//                QuestionBuilder::toDomainObject
-//        ).collect(toList());
-
-        return null;
+        List<QuestionDO> questionDOS = questionDOMapper.findQuestionsByCondition(condition.buildParams());
+        return questionDOS.stream().map(
+                QuestionBuilder::toDomainObject
+        ).collect(toList());
     }
 }

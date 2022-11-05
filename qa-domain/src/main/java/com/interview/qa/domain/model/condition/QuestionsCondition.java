@@ -1,19 +1,20 @@
 package com.interview.qa.domain.model.condition;
 
 import lombok.Data;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
 @Data
 public class QuestionsCondition {
     /**
-     * 当前页
+     * offset
      */
-    private Integer page;
+    private Integer offset;
     /**
      * 每页条数
      */
-    private Integer pageSize;
+    private Integer limit;
     /**
      * 标签
      */
@@ -21,9 +22,16 @@ public class QuestionsCondition {
     /**
      * 排序字段
      */
-    private String sortField;
-    /**
-     * 排序方式 asc：升序 desc：降序
-     */
-    private String sortType;
+    private String orderBy;
+
+    public QuestionsCondition buildParams() {
+        if (this.limit == null) {
+            this.limit = 15;
+        }
+        if (this.offset == null || this.offset == 0) {
+            this.offset = 1;
+        }
+        this.orderBy = StringUtils.isEmpty(this.orderBy) ?"id asc":orderBy;
+        return this;
+    }
 }

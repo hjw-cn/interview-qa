@@ -23,7 +23,7 @@ public class QuestionAnswerController {
 
     @RequestMapping(value = "/questions", method = {RequestMethod.GET, RequestMethod.POST})
     public MultiResponse<Question> getQuestions(@RequestBody QuestionRequest questionRequest) {
-        List<Question> allQuestion = questionAppService.findAllQuestion(QuestionRequestBuilder.buildQuestionsQuery(questionRequest));
+        List<Question> allQuestion = questionAppService.findQuestions(QuestionRequestBuilder.buildQuestionsQuery(questionRequest));
         return ResponseBuilder.withMulti(true, "200", "success", allQuestion);
     }
 
