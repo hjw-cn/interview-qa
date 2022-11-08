@@ -22,7 +22,7 @@
         SELECT
         <include refid="ALL_COLUMNS"/>
         FROM question
-        ORDER BY #{orderBy}
+        ORDER BY ${orderBy}
         LIMIT #{offset}, #{limit}
     </select>
 

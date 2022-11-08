@@ -5,10 +5,8 @@ import com.interview.qa.app.model.command.QuestionsQuery;
 import com.interview.qa.domain.model.Question;
 import com.interview.qa.domain.model.condition.QuestionsCondition;
 import com.interview.qa.domain.service.QuestionService;
-import io.netty.util.internal.StringUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -52,7 +50,7 @@ public class QuestionAppService {
         questionsCondition.setOffset((questionsQuery.getPage() - 1) * questionsQuery.getPageSize());
         questionsCondition.setTags(questionsQuery.getTags());
         if (questionsQuery.getSortField() != null){
-            String orderBy = StrUtil.concat(true, questionsQuery.getSortField(), " ", questionsQuery.getSortField());
+            String orderBy = StrUtil.concat(true, questionsQuery.getSortField(), " ", questionsQuery.getSortType());
             questionsCondition.setOrderBy(orderBy);
         }
         return questionsCondition;

@@ -28,7 +28,7 @@ public class QuestionsCondition {
         if (this.limit == null) {
             this.limit = 15;
         }
-        if (this.offset == null || this.offset == 0) {
+        if (this.offset == null) {
             this.offset = 1;
         }
         this.orderBy = StringUtils.isEmpty(this.orderBy) ?"id asc":orderBy;
