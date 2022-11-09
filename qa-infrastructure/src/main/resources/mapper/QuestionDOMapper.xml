@@ -32,5 +32,9 @@
         LIMIT #{offset}, #{limit}
     </select>
 
+    <select id="findQuestionUidById" resultType="java.lang.String">
+        select uid from question where id = #{id}
+    </select>
+
 
 </mapper>

@@ -13,6 +13,7 @@ import com.interview.qa.persistence.model.QuestionSearchDO;
 import com.interview.qa.persistence.search.QuestionSearchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
@@ -64,15 +65,24 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     }
 
     @Override
+    @Transactional
     public void updateQuestion(Question question) {
+        // 先更新mysql 再更新es
         QuestionDO questionDO = QuestionBuilder.toDataObject(question);
         questionDOMapper.updateById(questionDO);
+
+        String questionUidById = questionDOMapper.findQuestionUidById(question.getId());
+        question.setUid(questionUidById);
+        if (question.getAnswer() != null) {
+            QuestionSearchDO questionSearchDO = QuestionBuilder.toSearchDataObject(question);
+            questionSearchRepository.save(questionSearchDO);
+        }
     }
 
     @Override
     public List<Question> findQuestionByCondition(QuestionsCondition condition) {
         List<Long> questionIdsByTags = findQuestionIdByTags(condition.getTags());
-        if (CollectionUtil.isEmpty(questionIdsByTags)){
+        if (CollectionUtil.isEmpty(questionIdsByTags)) {
             return Collections.emptyList();
         }
         condition.setQuestionIds(questionIdsByTags);

@@ -12,5 +12,6 @@ import java.util.List;
 public interface QuestionDOMapper extends BaseMapper<QuestionDO> {
 
     List<QuestionDO> findQuestionsByCondition(QuestionsCondition condition);
+    String findQuestionUidById(Long id);
 }
 
