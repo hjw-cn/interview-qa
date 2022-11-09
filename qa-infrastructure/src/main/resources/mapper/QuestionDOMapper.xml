@@ -5,8 +5,7 @@
 
 <mapper namespace="com.interview.qa.persistence.mapper.QuestionDOMapper">
     <sql id="ALL_COLUMNS">
-        id
-        ,
+        `id`,
         `type`,
         content,
         `level`,
@@ -22,6 +21,13 @@
         SELECT
         <include refid="ALL_COLUMNS"/>
         FROM question
+        <where>
+            <if test="questionIds!=null and questionIds.size()>0">
+                <foreach collection="questionIds" item="questionId" open="id IN (" separator="," close=")">
+                    #{questionId}
+                </foreach>
+            </if>
+        </where>
         ORDER BY ${orderBy}
         LIMIT #{offset}, #{limit}
     </select>

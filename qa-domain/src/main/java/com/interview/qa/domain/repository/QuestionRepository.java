@@ -38,4 +38,8 @@ public interface QuestionRepository{
      */
     List<Question> findQuestionByCondition(QuestionsCondition condition);
 
+    /**
+     * 根据标签查询问题id列表
+     */
+    List<Long> findQuestionIdByTags(List<String> tags);
 }

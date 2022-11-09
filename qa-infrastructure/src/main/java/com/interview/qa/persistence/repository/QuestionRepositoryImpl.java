@@ -1,17 +1,20 @@
 package com.interview.qa.persistence.repository;
 
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.lang.UUID;
 import com.interview.qa.domain.model.Question;
 import com.interview.qa.domain.model.condition.QuestionsCondition;
 import com.interview.qa.domain.repository.QuestionRepository;
 import com.interview.qa.persistence.convertor.QuestionBuilder;
 import com.interview.qa.persistence.mapper.QuestionDOMapper;
+import com.interview.qa.persistence.mapper.TagQuestionDOMapper;
 import com.interview.qa.persistence.model.QuestionDO;
 import com.interview.qa.persistence.model.QuestionSearchDO;
 import com.interview.qa.persistence.search.QuestionSearchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +26,7 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 
     private final QuestionDOMapper questionDOMapper;
     private final QuestionSearchRepository questionSearchRepository;
+    private final TagQuestionDOMapper tagQuestionDOMapper;
 
     @Override
     public void deleteQuestionById(Long id) {
@@ -67,9 +71,20 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 
     @Override
     public List<Question> findQuestionByCondition(QuestionsCondition condition) {
+        List<Long> questionIdsByTags = findQuestionIdByTags(condition.getTags());
+        if (CollectionUtil.isEmpty(questionIdsByTags)){
+            return Collections.emptyList();
+        }
+        condition.setQuestionIds(questionIdsByTags);
         List<QuestionDO> questionDOS = questionDOMapper.findQuestionsByCondition(condition.buildParams());
         return questionDOS.stream().map(
                 QuestionBuilder::toDomainObject
         ).collect(toList());
+    }
+
+    @Override
+    public List<Long> findQuestionIdByTags(List<String> tags) {
+        if (CollectionUtil.isEmpty(tags)) return Collections.emptyList();
+        return tagQuestionDOMapper.findQuestionIdsByTags(tags);
     }
 }

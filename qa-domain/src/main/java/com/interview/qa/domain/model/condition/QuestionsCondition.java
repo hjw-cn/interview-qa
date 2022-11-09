@@ -24,6 +24,8 @@ public class QuestionsCondition {
      */
     private String orderBy;
 
+    private List<Long> questionIds;
+
     public QuestionsCondition buildParams() {
         if (this.limit == null) {
             this.limit = 15;
