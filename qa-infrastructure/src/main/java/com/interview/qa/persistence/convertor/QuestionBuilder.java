@@ -44,4 +44,13 @@ public class QuestionBuilder {
         questionSearchDO.setAnswer(question.getAnswer());
         return questionSearchDO;
     }
+
+    public static QuestionSearchDO toSearchDataObject(QuestionDO question) {
+        QuestionSearchDO questionSearchDO = new QuestionSearchDO();
+        // mysql中的uid对应es中的id
+        questionSearchDO.setId(question.getUid());
+        questionSearchDO.setContent(question.getContent());
+        questionSearchDO.setAnswer(question.getAnswer());
+        return questionSearchDO;
+    }
 }

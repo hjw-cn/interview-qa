@@ -71,10 +71,9 @@ public class QuestionRepositoryImpl implements QuestionRepository {
         QuestionDO questionDO = QuestionBuilder.toDataObject(question);
         questionDOMapper.updateById(questionDO);
 
-        String questionUidById = questionDOMapper.findQuestionUidById(question.getId());
-        question.setUid(questionUidById);
+        QuestionDO questionById = questionDOMapper.selectById(question.getId());
         if (question.getAnswer() != null) {
-            QuestionSearchDO questionSearchDO = QuestionBuilder.toSearchDataObject(question);
+            QuestionSearchDO questionSearchDO = QuestionBuilder.toSearchDataObject(questionById);
             questionSearchRepository.save(questionSearchDO);
         }
     }
