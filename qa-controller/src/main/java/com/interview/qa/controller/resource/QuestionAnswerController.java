@@ -30,7 +30,7 @@ public class QuestionAnswerController {
     @GetMapping("/question/{id}")
     public Response getQuestionById(@PathVariable Long id) {
         Question questionById = questionAppService.findQuestionById(id);
-        return ResponseBuilder.with(true, "200", "success", questionById);
+        return ResponseBuilder.withSingle(true, "200", "success", questionById);
     }
 
     @GetMapping("/question/tag/{tag}")
