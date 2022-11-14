@@ -29,6 +29,8 @@ spring:
   elasticsearch:
     rest:
       uris: http://localhost:9200
+  profiles:
+    active: local
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

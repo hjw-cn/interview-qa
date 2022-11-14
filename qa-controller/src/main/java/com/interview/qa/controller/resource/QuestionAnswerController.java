@@ -10,7 +10,9 @@ import com.interview.qa.controller.model.request.QuestionRequest;
 import com.interview.qa.domain.model.Question;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
@@ -56,6 +58,13 @@ public class QuestionAnswerController {
     @DeleteMapping("/question/delete/{id}")
     public Response deleteQuestion(@PathVariable Long id) {
         questionAppService.deleteQuestionById(id);
+        return ResponseBuilder.with(true, "200", "success", null);
+    }
+
+    @DeleteMapping("/question/import/excel")
+    public Response importQuestionFromExcel(MultipartFile file) {
+
+        questionAppService.importQuestionFromExcel(file);
         return ResponseBuilder.with(true, "200", "success", null);
     }
 }

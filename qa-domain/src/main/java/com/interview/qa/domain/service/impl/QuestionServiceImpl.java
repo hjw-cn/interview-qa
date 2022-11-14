@@ -6,7 +6,9 @@ import com.interview.qa.domain.repository.QuestionRepository;
 import com.interview.qa.domain.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.List;
 
 @Service
@@ -43,5 +45,15 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public List<Question> findQuestionsByCondition(QuestionsCondition condition) {
         return questionRepository.findQuestionByCondition(condition);
+    }
+
+    @Override
+    public Boolean resolveExcelAndSave(MultipartFile file) {
+        return null;
+    }
+
+    @Override
+    public Boolean saveQuestionFile(MultipartFile file) {
+        return null;
     }
 }
