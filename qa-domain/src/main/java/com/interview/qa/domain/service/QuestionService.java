@@ -39,7 +39,9 @@ public interface QuestionService {
      */
     List<Question> findQuestionsByCondition(QuestionsCondition condition);
 
-    Boolean resolveExcelAndSave(MultipartFile file);
+    void resolveExcelAndSave(MultipartFile file);
 
     Boolean saveQuestionFile(MultipartFile file);
+
+    Integer saveQuestionList(List<Question> questionList);
 }

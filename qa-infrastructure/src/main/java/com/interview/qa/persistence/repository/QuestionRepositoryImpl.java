@@ -2,9 +2,12 @@ package com.interview.qa.persistence.repository;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.lang.UUID;
+import com.alibaba.excel.EasyExcel;
 import com.interview.qa.domain.model.Question;
 import com.interview.qa.domain.model.condition.QuestionsCondition;
 import com.interview.qa.domain.repository.QuestionRepository;
+import com.interview.qa.easyexcel.QuestionDataListener;
+import com.interview.qa.easyexcel.data.QuestionExcelData;
 import com.interview.qa.persistence.convertor.QuestionBuilder;
 import com.interview.qa.persistence.mapper.QuestionDOMapper;
 import com.interview.qa.persistence.mapper.TagQuestionDOMapper;
@@ -12,17 +15,22 @@ import com.interview.qa.persistence.model.QuestionDO;
 import com.interview.qa.persistence.model.QuestionSearchDO;
 import com.interview.qa.persistence.search.QuestionSearchRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.util.stream.Collectors.toList;
 
 @Repository
 @RequiredArgsConstructor
+@Slf4j
 public class QuestionRepositoryImpl implements QuestionRepository {
 
     private final QuestionDOMapper questionDOMapper;
@@ -53,15 +61,16 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     }
 
     @Override
-    public void insertQuestion(Question question) {
-        String uid = UUID.randomUUID().toString();
-        question.setUid(uid);
+    public Boolean insertQuestion(Question question) {
+        // 设置唯一id
+        question.setUid(UUID.randomUUID().toString());
         // 构建持久化对象
         QuestionDO questionDO = QuestionBuilder.toDataObject(question);
         QuestionSearchDO questionSearchDO = QuestionBuilder.toSearchDataObject(question);
         // 持久化到mysql和es
-        questionDOMapper.insert(questionDO);
+        int insert = questionDOMapper.insert(questionDO);
         questionSearchRepository.save(questionSearchDO);
+        return insert >= 1;
     }
 
     @Override
@@ -95,5 +104,26 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     public List<Long> findQuestionIdByTags(List<String> tags) {
         if (CollectionUtil.isEmpty(tags)) return Collections.emptyList();
         return tagQuestionDOMapper.findQuestionIdsByTags(tags);
+    }
+
+    @Override
+    public Integer batchInsertQuestion(List<Question> questionList) {
+        AtomicInteger success = new AtomicInteger();
+        questionList.forEach(question -> {
+            if (insertQuestion(question)) {
+                success.incrementAndGet();
+            }
+        });
+
+        return success.get();
+    }
+
+    @Override
+    public void resolveExcelAndSave(MultipartFile file) {
+        try {
+            EasyExcel.read(file.getInputStream(), QuestionExcelData.class, new QuestionDataListener(this)).sheet().doRead();
+        } catch (IOException e) {
+            log.error("解析excel文件失败", e);
+        }
     }
 }

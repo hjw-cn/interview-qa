@@ -48,12 +48,17 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Boolean resolveExcelAndSave(MultipartFile file) {
-        return null;
+    public void resolveExcelAndSave(MultipartFile file) {
+        questionRepository.resolveExcelAndSave(file);
     }
 
     @Override
     public Boolean saveQuestionFile(MultipartFile file) {
         return null;
+    }
+
+    @Override
+    public Integer saveQuestionList(List<Question> questionList) {
+        return questionRepository.batchInsertQuestion(questionList);
     }
 }

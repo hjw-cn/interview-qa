@@ -10,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -64,24 +63,24 @@ public class QuestionAppService {
 
     /**
      * 从excel文件导入数据
+     *
      * @param file excel文件
-     * @return 结果
      */
-    public Boolean importQuestionFromExcel(MultipartFile file) {
+    public void importQuestionFromExcel(MultipartFile file) {
 //        new File("C:\\Users\\Administrator\\Desktop\\test.xlsx");
         // 1. domain: 解析excel，批量存入数据
-        questionService.resolveExcelAndSave(file);
-        // 2. domain: 保存excel到cos
-        questionService.saveQuestionFile(file);
+//        questionService.resolveExcelAndSave(file);
+//        // 2. domain: 保存excel到cos
+//        questionService.saveQuestionFile(file);
+
+
+        CompletableFuture<Void> resolveFileFuture = CompletableFuture.runAsync(() -> {
+            questionService.resolveExcelAndSave(file);
+        });
 
         CompletableFuture<Boolean> saveFileFuture = CompletableFuture.supplyAsync(() -> {
             return questionService.saveQuestionFile(file);
         });
-
-        CompletableFuture<Boolean> resolveFileFuture = CompletableFuture.supplyAsync(() -> {
-            return questionService.resolveExcelAndSave(file);
-        });
-
         try {
             saveFileFuture.get();
             resolveFileFuture.get();
@@ -89,6 +88,5 @@ public class QuestionAppService {
             log.error("importQuestionFromExcel error", e);
         }
 
-        return true;
     }
 }

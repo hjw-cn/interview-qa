@@ -61,7 +61,7 @@ public class QuestionAnswerController {
         return ResponseBuilder.with(true, "200", "success", null);
     }
 
-    @DeleteMapping("/question/import/excel")
+    @PostMapping("/question/import/excel")
     public Response importQuestionFromExcel(MultipartFile file) {
 
         questionAppService.importQuestionFromExcel(file);

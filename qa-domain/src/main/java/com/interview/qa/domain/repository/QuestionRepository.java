@@ -4,6 +4,7 @@ import com.interview.qa.domain.model.Question;
 import com.interview.qa.domain.model.condition.QuestionsCondition;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public interface QuestionRepository{
     /**
      * 新增问题
      */
-    void insertQuestion(Question question);
+    Boolean insertQuestion(Question question);
 
     /**
      * 更新问题
@@ -42,4 +43,10 @@ public interface QuestionRepository{
      * 根据标签查询问题id列表
      */
     List<Long> findQuestionIdByTags(List<String> tags);
+    /**
+     * 批量插入问题
+     */
+    Integer batchInsertQuestion(List<Question> questionList);
+
+    void resolveExcelAndSave(MultipartFile file);
 }
