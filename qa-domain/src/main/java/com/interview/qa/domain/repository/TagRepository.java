@@ -22,7 +22,14 @@ public interface TagRepository {
     Tag findTagById(Long id);
 
     /**
+     * 查询所有tagName
+     */
+    List<String> findAllTagName();
+
+    /**
      * 新增标签
      */
     void insertTag(Tag tag);
+
+    Tag findTagByName(String tagName);
 }

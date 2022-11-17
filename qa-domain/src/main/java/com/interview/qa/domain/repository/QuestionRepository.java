@@ -27,7 +27,7 @@ public interface QuestionRepository{
     /**
      * 新增问题
      */
-    Boolean insertQuestion(Question question);
+    Long insertQuestion(Question question);
 
     /**
      * 更新问题

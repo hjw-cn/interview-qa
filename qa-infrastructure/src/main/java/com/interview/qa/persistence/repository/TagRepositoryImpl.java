@@ -1,6 +1,7 @@
 package com.interview.qa.persistence.repository;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.interview.qa.domain.model.Tag;
 import com.interview.qa.domain.repository.TagRepository;
 import com.interview.qa.persistence.mapper.TagDOMapper;
@@ -40,11 +41,26 @@ public class TagRepositoryImpl implements TagRepository {
     }
 
     @Override
+    public List<String> findAllTagName(){
+        return tagDOMapper.findAllTagName();
+    }
+
+    @Override
     public void insertTag(Tag tag) {
         // TODO Auto-generated method stub
         TagDO tagDO = new TagDO();
         tagDO.setTagName(tag.getTagName());
         tagDOMapper.insert(tagDO);
+    }
+
+    @Override
+    public Tag findTagByName(String tagName) {
+        TagDO tagDO = tagDOMapper.selectOne(new LambdaQueryWrapper<TagDO>().eq(TagDO::getTagName, tagName));
+        // 转为领域对象
+        Tag tag = new Tag();
+        tag.setId(tagDO.getId());
+        tag.setTagName(tagDO.getTagName());
+        return tag;
     }
 
 }

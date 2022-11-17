@@ -5,4 +5,7 @@
 
 <mapper namespace="com.interview.qa.persistence.mapper.TagDOMapper">
 
+    <select id="findAllTagName" resultType="java.lang.String">
+        SELECT tag_name FROM tag
+    </select>
 </mapper>

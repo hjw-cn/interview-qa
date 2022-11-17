@@ -6,6 +6,7 @@ import com.alibaba.excel.EasyExcel;
 import com.interview.qa.domain.model.Question;
 import com.interview.qa.domain.model.condition.QuestionsCondition;
 import com.interview.qa.domain.repository.QuestionRepository;
+import com.interview.qa.domain.repository.TagRepository;
 import com.interview.qa.easyexcel.QuestionDataListener;
 import com.interview.qa.easyexcel.data.QuestionExcelData;
 import com.interview.qa.persistence.convertor.QuestionBuilder;
@@ -37,6 +38,8 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     private final QuestionSearchRepository questionSearchRepository;
     private final TagQuestionDOMapper tagQuestionDOMapper;
 
+    private final TagRepository tagRepository;
+
     @Override
     public void deleteQuestionById(Long id) {
         questionDOMapper.deleteById(id);
@@ -61,16 +64,16 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     }
 
     @Override
-    public Boolean insertQuestion(Question question) {
+    public Long insertQuestion(Question question) {
         // 设置唯一id
         question.setUid(UUID.randomUUID().toString());
         // 构建持久化对象
         QuestionDO questionDO = QuestionBuilder.toDataObject(question);
         QuestionSearchDO questionSearchDO = QuestionBuilder.toSearchDataObject(question);
         // 持久化到mysql和es
-        int insert = questionDOMapper.insert(questionDO);
+        questionDOMapper.insert(questionDO);
         questionSearchRepository.save(questionSearchDO);
-        return insert >= 1;
+        return questionDO.getId();
     }
 
     @Override
@@ -110,7 +113,7 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     public Integer batchInsertQuestion(List<Question> questionList) {
         AtomicInteger success = new AtomicInteger();
         questionList.forEach(question -> {
-            if (insertQuestion(question)) {
+            if (insertQuestion(question) != null) {
                 success.incrementAndGet();
             }
         });
@@ -121,7 +124,7 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     @Override
     public void resolveExcelAndSave(MultipartFile file) {
         try {
-            EasyExcel.read(file.getInputStream(), QuestionExcelData.class, new QuestionDataListener(this)).sheet().doRead();
+            EasyExcel.read(file.getInputStream(), QuestionExcelData.class, new QuestionDataListener(this, tagRepository, tagQuestionDOMapper)).sheet().doRead();
         } catch (IOException e) {
             log.error("解析excel文件失败", e);
         }
