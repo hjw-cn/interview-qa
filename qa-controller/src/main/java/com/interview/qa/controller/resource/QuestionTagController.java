@@ -1,7 +1,7 @@
 package com.interview.qa.controller.resource;
 
 import com.alibaba.cola.dto.Response;
-import com.interview.qa.app.service.question.TagAppService;
+import com.interview.qa.app.service.tag.TagAppService;
 import com.interview.qa.controller.model.builder.ResponseBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

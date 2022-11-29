@@ -2,7 +2,7 @@ package com.interview.qa.controller.resource;
 
 import com.alibaba.cola.dto.MultiResponse;
 import com.alibaba.cola.dto.Response;
-import com.interview.qa.app.model.command.QuestionsQuery;
+import com.interview.qa.app.model.cqe.QuestionsQuery;
 import com.interview.qa.app.service.question.QuestionAppService;
 import com.interview.qa.controller.model.builder.QuestionRequestBuilder;
 import com.interview.qa.controller.model.builder.ResponseBuilder;
@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.util.Collections;
 import java.util.List;
 

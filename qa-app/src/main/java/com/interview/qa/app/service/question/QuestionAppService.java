@@ -1,7 +1,7 @@
 package com.interview.qa.app.service.question;
 
 import cn.hutool.core.util.StrUtil;
-import com.interview.qa.app.model.command.QuestionsQuery;
+import com.interview.qa.app.model.cqe.QuestionsQuery;
 import com.interview.qa.domain.model.Question;
 import com.interview.qa.domain.model.condition.QuestionsCondition;
 import com.interview.qa.domain.service.QuestionService;
@@ -67,20 +67,13 @@ public class QuestionAppService {
      * @param file excel文件
      */
     public void importQuestionFromExcel(MultipartFile file) {
-//        new File("C:\\Users\\Administrator\\Desktop\\test.xlsx");
-        // 1. domain: 解析excel，批量存入数据
-//        questionService.resolveExcelAndSave(file);
-//        // 2. domain: 保存excel到cos
-//        questionService.saveQuestionFile(file);
 
-
+        // 解析并保存数据
         CompletableFuture<Void> resolveFileFuture = CompletableFuture.runAsync(() -> {
             questionService.resolveExcelAndSave(file);
         });
-
-        CompletableFuture<Boolean> saveFileFuture = CompletableFuture.supplyAsync(() -> {
-            return questionService.saveQuestionFile(file);
-        });
+        // 保存文件到oss
+        CompletableFuture<Boolean> saveFileFuture = CompletableFuture.supplyAsync(() -> questionService.saveQuestionFile(file));
         try {
             saveFileFuture.get();
             resolveFileFuture.get();

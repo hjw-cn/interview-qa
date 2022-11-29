@@ -1,4 +1,4 @@
-package com.interview.qa.app.service.question;
+package com.interview.qa.app.service.tag;
 
 import com.interview.qa.app.model.dto.TagDTO;
 import com.interview.qa.domain.model.Tag;
