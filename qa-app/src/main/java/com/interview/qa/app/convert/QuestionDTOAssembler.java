@@ -1,6 +1,6 @@
-package com.interview.qa.app.assembler;
+package com.interview.qa.app.convert;
 
-import com.interview.qa.app.model.dto.QuestionDTO;
+import com.interview.qa.client.dto.QuestionDTO;
 import com.interview.qa.domain.model.Question;
 
 public class QuestionDTOAssembler {

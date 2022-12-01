@@ -42,10 +42,6 @@ public class QuestionServiceImpl implements QuestionService {
         questionRepository.updateQuestion(question);
     }
 
-    @Override
-    public List<Question> findQuestionsByCondition(QuestionsCondition condition) {
-        return questionRepository.findQuestionByCondition(condition);
-    }
 
     @Override
     public void resolveExcelAndSave(MultipartFile file) {

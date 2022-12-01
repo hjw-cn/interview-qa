@@ -1,5 +1,6 @@
 package com.interview.qa.domain.repository;
 
+import com.interview.qa.client.cqe.QuestionsQuery;
 import com.interview.qa.domain.model.Question;
 import com.interview.qa.domain.model.condition.QuestionsCondition;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +38,7 @@ public interface QuestionRepository{
     /**
      * 根据标签查询问题
      */
-    List<Question> findQuestionByCondition(QuestionsCondition condition);
+    List<Question> findQuestions(QuestionsQuery query);
 
     /**
      * 根据标签查询问题id列表

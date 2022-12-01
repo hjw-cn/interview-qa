@@ -11,7 +11,7 @@
     <modules>
         <module>start</module>
         <module>qa-controller</module>
-        <module>qa-common</module>
+        <module>qa-client</module>
         <module>qa-infrastructure</module>
         <module>qa-domain</module>
         <module>qa-app</module>

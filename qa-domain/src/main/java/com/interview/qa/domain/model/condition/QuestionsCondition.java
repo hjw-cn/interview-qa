@@ -1,11 +1,13 @@
 package com.interview.qa.domain.model.condition;
 
 import lombok.Data;
+import lombok.Setter;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
 
 @Data
+@Setter
 public class QuestionsCondition {
     /**
      * offset

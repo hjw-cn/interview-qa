@@ -1,6 +1,6 @@
 package com.interview.qa.controller.model.builder;
 
-import com.interview.qa.app.model.cqe.QuestionsQuery;
+import com.interview.qa.client.cqe.QuestionsQuery;
 import com.interview.qa.controller.model.request.QuestionRequest;
 
 public class QuestionRequestBuilder {

@@ -3,8 +3,10 @@ package com.interview.qa.persistence.repository;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.lang.UUID;
 import com.alibaba.excel.EasyExcel;
+import com.interview.qa.client.cqe.QuestionsQuery;
 import com.interview.qa.domain.model.Question;
 import com.interview.qa.domain.model.condition.QuestionsCondition;
+import com.interview.qa.domain.model.convert.QuestionConditionConvert;
 import com.interview.qa.domain.repository.QuestionRepository;
 import com.interview.qa.domain.repository.TagRepository;
 import com.interview.qa.easyexcel.QuestionDataListener;
@@ -91,12 +93,13 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     }
 
     @Override
-    public List<Question> findQuestionByCondition(QuestionsCondition condition) {
-        List<Long> questionIdsByTags = findQuestionIdByTags(condition.getTags());
+    public List<Question> findQuestions(QuestionsQuery query) {
+        List<Long> questionIdsByTags = findQuestionIdByTags(query.getTags());
         if (CollectionUtil.isEmpty(questionIdsByTags)) {
             return Collections.emptyList();
         }
-        condition.setQuestionIds(questionIdsByTags);
+        query.setQuestionIds(questionIdsByTags);
+        QuestionsCondition condition = QuestionConditionConvert.toQuestionCondition(query);
         List<QuestionDO> questionDOS = questionDOMapper.findQuestionsByCondition(condition.buildParams());
         return questionDOS.stream().map(
                 QuestionBuilder::toDomainObject
@@ -129,4 +132,6 @@ public class QuestionRepositoryImpl implements QuestionRepository {
             log.error("解析excel文件失败", e);
         }
     }
+
+
 }

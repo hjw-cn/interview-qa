@@ -34,10 +34,6 @@ public interface QuestionService {
      */
     void updateQuestion(Question question);
 
-    /**
-     * 根据标签查询问题
-     */
-    List<Question> findQuestionsByCondition(QuestionsCondition condition);
 
     void resolveExcelAndSave(MultipartFile file);
 

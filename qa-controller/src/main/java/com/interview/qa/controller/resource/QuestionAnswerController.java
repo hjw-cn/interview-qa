@@ -2,8 +2,8 @@ package com.interview.qa.controller.resource;
 
 import com.alibaba.cola.dto.MultiResponse;
 import com.alibaba.cola.dto.Response;
-import com.interview.qa.app.model.cqe.QuestionsQuery;
 import com.interview.qa.app.service.question.QuestionAppService;
+import com.interview.qa.client.cqe.QuestionsQuery;
 import com.interview.qa.controller.model.builder.QuestionRequestBuilder;
 import com.interview.qa.controller.model.builder.ResponseBuilder;
 import com.interview.qa.controller.model.request.QuestionRequest;

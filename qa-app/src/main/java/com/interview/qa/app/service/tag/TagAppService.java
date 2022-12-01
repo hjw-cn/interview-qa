@@ -1,6 +1,6 @@
 package com.interview.qa.app.service.tag;
 
-import com.interview.qa.app.model.dto.TagDTO;
+import com.interview.qa.client.dto.TagDTO;
 import com.interview.qa.domain.model.Tag;
 import com.interview.qa.domain.service.TagService;
 import lombok.RequiredArgsConstructor;

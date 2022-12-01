@@ -1,4 +1,4 @@
-package com.interview.qa.app.model.dto;
+package com.interview.qa.client.dto;
 
 import lombok.Data;
 

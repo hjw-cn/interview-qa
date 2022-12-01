@@ -1,74 +1,12 @@
 # 项目介绍
 面试题问答后端代码
-DDD架构开发
 # 项目结构
-```
-├─.github
-│  └─workflows
-├─app
-│  ├─application
-│  │  ├─command
-│  │  ├─query
-│  │  └─service
-│  ├─domain
-│  │  ├─entity
-│  │  ├─event
-│  │  ├─repository
-│  │  └─valueobject
-│  ├─infrastructure
-│  │  ├─cache
-│  │  ├─config
-│  │  ├─dao
-│  │  ├─datasource
-│  │  ├─event
-│  │  ├─exception
-│  │  ├─factory
-│  │  ├─http
-│  │  ├─mapper
-│  │  ├─mq
-│  │  ├─repository
-│  │  ├─service
-│  │  └─util
-│  └─interface
-│      ├─controller
-│      ├─dto
-│      ├─exception
-│      └─form
-├─config
-├─docs
-├─docker
-├─public
-├─resources
-│  ├─mapper
-│  └─static
-└─test
-    ├─application
-    │  ├─command
-    │  ├─query
-    │  └─service
-    ├─domain
-    │  ├─entity
-    │  ├─event
-    │  ├─repository
-    │  └─valueobject
-    ├─infrastructure
-    │  ├─cache
-    │  ├─config
-    │  ├─dao
-    │  ├─datasource
-    │  ├─event
-    │  ├─exception
-    │  ├─factory
-    │  ├─http
-    │  ├─mapper
-    │  ├─mq
-    │  ├─repository
-    │  ├─service
-    │  └─util
-    └─interface
-        ├─controller
-        ├─dto
-        ├─exception
-        └─form
-```
+基于COLA4改造的DDD架构
 
+- 控制器模块 - 适配层 - 控制层
+- 应用模块 - 应用层 - service层
+- 领域模块 - 领域层 - service层
+- 基础设施模块 - 基础设施层 - dao层
+- client模块 封装对外暴露的api、dto、枚举、常量等贯穿整个应用所有层
+
+![img.png](img.png)

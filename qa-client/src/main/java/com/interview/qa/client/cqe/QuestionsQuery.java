@@ -1,10 +1,8 @@
-package com.interview.qa.app.model.cqe;
+package com.interview.qa.client.cqe;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import java.util.List;
 
 /**
@@ -16,10 +14,6 @@ import java.util.List;
 @Accessors(chain = true)
 public class QuestionsQuery {
 
-    /**
-     * 当前页
-     */
-    @Min(value = 1, message = "当前页码不能小于1")
     private Integer page;
     /**
      * 每页条数
@@ -37,5 +31,7 @@ public class QuestionsQuery {
      * 排序方式 asc：升序 desc：降序
      */
     private String sortType;
+
+    private List<Long> questionIds;
 
 }
